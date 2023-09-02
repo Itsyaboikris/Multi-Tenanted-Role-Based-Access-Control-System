@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1693655529167,
+      "tag": "0000_easy_jazinda",
+      "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693656001966,
+      "tag": "0001_flashy_wild_child",
+      "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693656222004,
+      "tag": "0002_smiling_riptide",
+      "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1693656490565,
+      "tag": "0003_pale_krista_starr",
+      "breakpoints": false
+    }
+  ]
+}
