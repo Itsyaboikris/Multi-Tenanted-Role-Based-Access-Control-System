@@ -4,6 +4,7 @@
 		"migrate": "drizzle-kit generate:pg"
 	},
 	"dependencies": {
+		"argon2": "^0.31.1",
 		"drizzle-orm": "^0.28.5",
 		"fastify": "^4.22.2",
 		"fastify-guard": "^2.0.0",
