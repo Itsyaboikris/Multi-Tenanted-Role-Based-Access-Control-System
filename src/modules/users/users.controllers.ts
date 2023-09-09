@@ -1,10 +1,11 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreateUserBody, LoginBody } from "./users.schemas";
+import { AssignRoleToUserBody, CreateUserBody, LoginBody } from "./users.schemas";
 import { SYSTEM_ROLES } from "../../config/permissions";
 import { getRoleByName } from "../roles/roles.services";
 import { assignRoleToUser, createUser, getUserByEmail, getUsersByApplication } from "./users.services";
 import { users } from "../../db/schema";
 import jwt  from "jsonwebtoken";
+import { logger } from "../../utils/logger";
 
 export async function createUserHandler(request: FastifyRequest<{Body: CreateUserBody}>, reply: FastifyReply){
 	const {initialUser, ...data} = request.body
@@ -70,4 +71,24 @@ export async function loginHandler(request:FastifyRequest<{Body: LoginBody}>, re
 	}, "secret")
 
 	return {token}
+}
+
+export async function assignRoleToUserHandler(request:FastifyRequest<{Body: AssignRoleToUserBody}>, reply:FastifyReply) {
+
+	const applicationId = request.user.applicationId;
+	const {userId, roleId} = request.body
+
+	try {
+
+		const result = await assignRoleToUser({userId, applicationId, roleId})
+
+		return result;
+		
+	} catch (error) {
+		logger.error(error, `error assigning role to user`)
+		return reply.code(400).send({
+			message: `Could not assign role to user`
+		})
+	}
+
 }
